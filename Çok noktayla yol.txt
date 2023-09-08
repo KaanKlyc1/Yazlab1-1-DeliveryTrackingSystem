@@ -1,0 +1,25 @@
+A simple solution to your problem is: Use for loop
+Modify your get route code like the below one
+
+//  Example     
+MapRoute route;
+            GMapRoute r;
+            GMapOverlay routes;
+            for (int i = 0; i < _points.Count; i++)
+            {
+                if (_points[i + 1] != null)
+                {
+                    route = GoogleMapProvider.Instance
+    .GetRoute(_points[i], _points[i + 1], false, false, 14);
+                    r = new GMapRoute(route.Points, "My Route")
+                    {
+                        Stroke = new Pen(Color.Red, 5)
+                    };
+
+                    routes = new GMapOverlay("routes");
+                    routes.Routes.Add(r);
+                    map.Overlays.Add(routes);
+                }
+            }
+40,7659815277128
+29,9284636974335
